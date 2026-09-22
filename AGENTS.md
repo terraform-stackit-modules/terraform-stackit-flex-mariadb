@@ -7,6 +7,32 @@ This file provides context and instructions for AI coding agents (Copilot, Curso
 This is a Terraform module for [STACKIT](https://www.stackit.de/en/), the cloud platform by Schwarz Group.
 It is part of the [terraform-stackit-modules](https://github.com/terraform-stackit-modules) organization, which aims to provide community-maintained, production-grade Terraform modules for STACKIT.
 
+### This module: flex-mariadb
+
+Composite module for STACKIT **MariaDB Flex**. Repo name uses a hyphen (`flex-mariadb`); provider
+resources are `stackit_mariadb_instance` / `stackit_mariadb_credential`.
+
+**Sub-modules**
+- `modules/instance` — `stackit_mariadb_instance` (toggled by `create_instance` via `count`).
+- `modules/credential` — `stackit_mariadb_credential` (`for_each` over `credentials`).
+
+**Key inputs** — `project_id` (req), `region`, `create_instance`/`instance_id`, `name`,
+`mariadb_version`, `plan_name`, `parameters` (object: sgw_acl, enable_monitoring,
+monitoring_instance_id, graphite, metrics_frequency, metrics_prefix, max_disk_threshold, syslog),
+`credentials` (map keyed by stable id: `{rotate_when_changed?}`).
+
+**Outputs** — `instance_id`, `plan_id`, `dashboard_url`, `credential_ids`, `credential_usernames`,
+`credential_passwords` (sensitive), `credential_uris` (sensitive).
+
+**Gotchas**
+- MariaDB has NO database/user resources in the provider — access is via `stackit_mariadb_credential`
+  (auto-generated username/password), unlike postgres (which has database + user).
+- `credentials` keyed by a stable id; instance_id (known-after-apply) is only an attribute, never a
+  for_each key.
+- Root uses `coalesce(module.instance.instance_id, var.instance_id)` so credentials target the
+  created instance or an existing one (`create_instance = false`).
+- `password`/`uri` outputs are `sensitive = true`.
+
 ## Repository structure
 
 ```

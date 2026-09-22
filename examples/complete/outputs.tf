@@ -4,6 +4,6 @@ output "instance_id" {
 }
 
 output "credential_ids" {
-  description = "The credential IDs created by the example."
+  description = "The credential IDs created by the example (app + readonly)."
   value       = module.flex_mariadb.credential_ids
 }
