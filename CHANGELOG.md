@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## 1.0.0 (2026-09-22)
+
+### Features
+
+* Initial STACKIT MariaDB Flex module ([1e1207d](https://github.com/terraform-stackit-modules/terraform-stackit-flex-mariadb/commit/1e1207d4a2cdf101e63340f78a019694f4181156))
+
 ## [1.0.1](https://github.com/terraform-stackit-modules/terraform-repo-template/compare/v1.0.0...v1.0.1) (2026-09-09)
 
 ### Bug Fixes
