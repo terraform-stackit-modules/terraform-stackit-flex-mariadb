@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.0.1](https://github.com/terraform-stackit-modules/terraform-stackit-flex-mariadb/compare/v1.0.0...v1.0.1) (2026-10-27)
+
+### Bug Fixes
+
+* Issue with duplicate internal name observed during terratest (Error 400: The service instance name is taken: example-mariadb-internal.","description":""}) ([0f7a3c4](https://github.com/terraform-stackit-modules/terraform-stackit-flex-mariadb/commit/0f7a3c433cdbe01e334b903dbfad5a2774884324))
+
 ## 1.0.0 (2026-09-22)
 
 ### Features
