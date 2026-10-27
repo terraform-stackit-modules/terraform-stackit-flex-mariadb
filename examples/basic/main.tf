@@ -11,7 +11,7 @@ module "flex_mariadb" {
   source = "../.."
 
   project_id      = var.project_id
-  name            = "example-mariadb"
+  name            = "example-mariadb-basic"
   mariadb_version = "10.11"
   plan_name       = "stackit-mariadb-1.2.10-replica"
 
